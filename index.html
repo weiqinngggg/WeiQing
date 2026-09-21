@@ -4,72 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>你好，歡迎來到我的世界。</title>
-  <!-- 引入思源宋體 / 明體 -->
+  <!-- 引入思源宋體/明體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
   
   <style>
-    /* 1. 基本版面與漸層背景 */
+    /* 1. 背景與全域字體（沉靜低飽和藍） */
     body {
-      background: linear-gradient(135deg, #7FA2D8 0%, #5B7FB5 50%, #48699C 100%);
-      background-attachment: fixed;
-      color: #ffffff;
-      /* 全域統一使用明體 */
+      background-color: #6A93CD;
+      color: #FFFFFF;
       font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0;
-      padding: 6vh 5vw;
-      text-align: left;
-      letter-spacing: 0.08em;
-      line-height: 1.85;
+      padding: 7vh 6vw;
+      letter-spacing: 0.09em;
+      line-height: 2;
       min-height: 100vh;
       box-sizing: border-box;
     }
 
-    /* 容器居中與質感卡片背景 */
+    /* 2. 主容器 */
     .container {
-      max-width: 680px;
+      max-width: 580px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 16px;
-      padding: 2.5rem 2.2rem;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     }
 
-    /* 2. 標題與署名 */
+    /* 3. 頁首標題區：搭配左側優雅垂直線 */
+    .header-group {
+      border-left: 2px solid rgba(255, 255, 255, 0.85);
+      padding-left: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
     h1 {
-      font-size: 1.75rem;
+      font-size: 1.6rem;
       font-weight: 400;
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
-      margin: 0 0 0.3rem 0;
+      margin: 0 0 0.2rem 0;
       color: #ffffff;
       white-space: nowrap;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.08em;
     }
     .subtitle {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 2rem;
-      display: inline-block;
-      padding-bottom: 0.2rem;
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
 
-    /* 3. 主選單按鈕 */
+    /* 4. 主選單：上下線條包覆，展現雜誌感 */
     .menu {
       list-style: none;
-      padding: 0;
-      margin: 0 0 2.2rem 0;
+      padding: 0.7rem 0;
+      margin: 0 0 2.5rem 0;
       display: flex;
-      flex-wrap: nowrap;
       align-items: center;
-      white-space: nowrap;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      padding-bottom: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
     .menu li {
       margin: 0;
@@ -79,84 +66,74 @@
     .menu button {
       background: none;
       border: none;
-      color: rgba(255, 255, 255, 0.65);
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
-      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: inherit;
+      font-size: 0.92rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0.2rem 0.4rem;
-      transition: all 0.3s ease;
-      border-radius: 4px;
+      padding: 0;
+      transition: color 0.3s ease;
     }
     .menu button:hover {
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
     }
     .menu button.active {
       color: #ffffff;
-      font-weight: 600;
-      border-bottom: 2px solid #ffffff;
-      background: rgba(255, 255, 255, 0.12);
+      font-weight: 500;
+      border-bottom: 1px solid #ffffff;
+      padding-bottom: 2px;
     }
     .menu li::after {
-      content: "│";
+      content: "╱";
       color: rgba(255, 255, 255, 0.3);
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-      font-size: 0.8rem;
+      margin: 0 0.8rem;
+      font-size: 0.75rem;
     }
     .menu li:last-child::after {
       content: "";
       margin: 0;
     }
 
-    /* 4. 版面內部的說明文字與子選單 */
+    /* 5. 子選單：運用虛線引導視覺 */
     .section-desc {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.06em;
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
+      margin-bottom: 1rem;
     }
     .sub-menu {
       list-style: none;
-      padding: 0;
-      margin: 0 0 1.8rem 0;
+      padding: 0 0 0.8rem 0;
+      margin: 0 0 2rem 0;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.8rem;
+      gap: 1.5rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.35);
     }
     .sub-menu button {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.8);
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: inherit;
       font-size: 0.88rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0.3rem 0.9rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
+      padding: 0 0 2px 0;
+      transition: color 0.3s ease;
     }
     .sub-menu button:hover {
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.18);
     }
     .sub-menu button.active {
       color: #ffffff;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: 500;
+      border-bottom: 1px solid #ffffff;
     }
 
-    /* 5. 分頁內容控制與淡入動畫 */
+    /* 6. 切換內容與淡入效果 */
     .tab-content, .sub-tab-content {
       display: none;
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: translateY(4px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
     }
     .tab-content.active, .sub-tab-content.active {
       display: block;
@@ -164,65 +141,59 @@
       transform: translateY(0);
     }
 
-    /* 6. 內文與標題樣式 */
+    /* 7. 小標題線條點綴 */
     .sub-heading {
-      font-size: 1.02rem;
-      font-weight: 600;
-      margin-top: 1.6rem;
-      margin-bottom: 0.4rem;
+      font-size: 0.98rem;
+      font-weight: 500;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
       color: #ffffff;
+      letter-spacing: 0.1em;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
-    .sub-heading::before {
-      content: "✦";
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    p {
-      font-size: 0.92rem;
-      margin: 0.4rem 0;
-      color: rgba(255, 255, 255, 0.92);
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
-    }
-    .spacer {
-      height: 0.8rem;
-    }
-    .footer-note {
-      margin-top: 3.5rem;
-      padding-top: 1.2rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.25);
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.88rem;
-      text-align: center;
-      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
+    /* 標題右側延伸的質感細線 */
+    .sub-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.25);
+      margin-left: 1rem;
     }
 
-    /* 手機端專用微調 */
+    p {
+      font-size: 0.9rem;
+      margin: 0.4rem 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+    .spacer {
+      height: 1rem;
+    }
+
+    /* 頁尾點線 */
+    .footer-note {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px dotted rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+    }
+
+    /* 手機端專用調整 */
     @media (max-width: 600px) {
       body {
-        padding: 4vh 3vw;
-      }
-      .container {
-        padding: 1.8rem 1.3rem;
-        border-radius: 12px;
+        padding: 6vh 6vw;
       }
       h1 {
         font-size: 1.3rem;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.04em;
       }
       .menu button {
         font-size: 0.82rem;
-        padding: 0.1rem 0.2rem;
       }
       .menu li::after {
-        margin-left: 0.25rem;
-        margin-right: 0.25rem;
-      }
-      .section-desc {
-        font-size: 0.85rem;
+        margin: 0 0.4rem;
       }
       p {
         font-size: 0.88rem;
@@ -233,14 +204,16 @@
 <body>
 
   <div class="container">
-    <!-- 主頁標題區 -->
-    <h1>你好，歡迎來到我的世界。</h1>
-    <div class="subtitle">@蔚晴</div>
+    <!-- 標題區：左側直線 -->
+    <div class="header-group">
+      <h1>你好，歡迎來到我的世界。</h1>
+      <div class="subtitle">@蔚晴</div>
+    </div>
 
-    <!-- 主選單按鈕 -->
+    <!-- 主選單：上下線條 -->
     <ul class="menu">
       <li><button class="tab-btn active" onclick="switchTab('about', this)">關於我</button></li>
-      <li><button class="tab-btn" onclick="switchTab('interaction', this)">交友/互動方式</button></li>
+      <li><button class="tab-btn" onclick="switchTab('interaction', this)">交友 / 互動方式</button></li>
       <li><button class="tab-btn" onclick="switchTab('layout', this)">版面</button></li>
     </ul>
 
@@ -287,11 +260,11 @@
     <div id="layout" class="tab-content">
       <div class="section-desc">會出現以下幾部分：</div>
 
-      <!-- 版面內部的子選單 -->
+      <!-- 子選單：底部虛線 -->
       <ul class="sub-menu">
-        <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">🎮 遊戲</button></li>
-        <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">📖 愛書</button></li>
-        <li><button class="sub-tab-btn" onclick="switchSubTab('craft', this)">🪡 手工</button></li>
+        <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">遊戲</button></li>
+        <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">愛書</button></li>
+        <li><button class="sub-tab-btn" onclick="switchSubTab('craft', this)">手工</button></li>
       </ul>
 
       <!-- 子分頁：遊戲 -->
@@ -328,14 +301,13 @@
         <p>近期對水晶也有興趣。</p>
       </div>
 
-      <!-- 僅限「版面」頁出現的結尾祝福 -->
+      <!-- 結尾點線分隔 -->
       <div class="footer-note">
         <p>感謝你看完，無論有沒有成為朋友都祝你生活愉快。</p>
       </div>
     </div>
   </div>
 
-  <!-- 控制頁籤切換的 JS -->
   <script>
     function switchTab(tabId, btnElement) {
       const allTabs = document.querySelectorAll('.tab-content');
@@ -355,4 +327,10 @@
       const allSubBtns = document.querySelectorAll('.sub-tab-btn');
       allSubBtns.forEach(btn => btn.classList.remove('active'));
 
-      document.getElementById(subTabId).cla
+      document.getElementById(subTabId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
