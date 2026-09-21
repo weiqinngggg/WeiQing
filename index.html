@@ -80,7 +80,13 @@
       font-size: 0.85rem;
     }
 
-    /* 4. 版面內部的子選單 */
+    /* 4. 版面內部的子選單與說明文字 */
+    .section-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+    }
     .sub-menu {
       list-style: none;
       padding: 0;
@@ -127,14 +133,6 @@
     }
 
     /* 6. 內文與標題樣式 */
-    h2 {
-      font-size: 1.3rem;
-      font-weight: normal;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.08em;
-    }
     .sub-heading {
       font-size: 1.02rem;
       font-weight: bold;
@@ -177,8 +175,8 @@
         margin-left: 0.35rem;
         margin-right: 0.35rem;
       }
-      h2 {
-        font-size: 1.2rem;
+      .section-desc {
+        font-size: 0.88rem;
       }
       p {
         font-size: 0.9rem;
@@ -201,7 +199,6 @@
 
   <!-- 分頁 1：關於我 -->
   <div id="about" class="tab-content active">
-    <h2>關於我</h2>
     <p>我是蔚晴，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
     <p>已成年，生理和心理上都是女性。</p>
     <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
@@ -218,8 +215,6 @@
 
   <!-- 分頁 2：交友/互動方式 -->
   <div id="interaction" class="tab-content">
-    <h2>交友 / 互動方式</h2>
-    
     <div class="sub-heading">交友</div>
     <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
     <p>（註：我方不會主動刪友，被刪可直戳回來。）</p>
@@ -243,7 +238,7 @@
 
   <!-- 分頁 3：版面 -->
   <div id="layout" class="tab-content">
-    <h2>會出現以下幾部分</h2>
+    <div class="section-desc">會出現以下幾部分：</div>
 
     <!-- 版面內部的子選單 -->
     <ul class="sub-menu">
