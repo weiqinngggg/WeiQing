@@ -11,33 +11,34 @@
       color: #ffffff;           /* 主文字純白 */
       font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0;
-      padding: 8vh 8vw;
+      padding: 7vh 7vw;
       text-align: left;
-      letter-spacing: 0.12em;
-      line-height: 2;
+      letter-spacing: 0.08em;
+      line-height: 1.85;
     }
 
     /* 2. 標題與署名 */
     h1 {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: normal;
       margin: 0 0 0.3rem 0;
       color: #ffffff;
-      white-space: nowrap; /* 防止自動折行 */
+      white-space: nowrap;
+      letter-spacing: 0.06em;
     }
     .subtitle {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.8rem;
     }
 
-    /* 3. 主選單按鈕 (保留分隔線風格) */
+    /* 3. 主選單按鈕 */
     .menu {
       list-style: none;
       padding: 0;
       margin: 0 0 2rem 0;
       display: flex;
-      flex-wrap: nowrap; /* 避免選單自動換行 */
+      flex-wrap: nowrap;
       align-items: center;
       white-space: nowrap;
     }
@@ -51,10 +52,10 @@
       border: none;
       color: rgba(255, 255, 255, 0.65);
       font-family: inherit;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0;
+      padding: 0 0 2px 0;
       transition: all 0.3s;
     }
     .menu button:hover {
@@ -67,48 +68,27 @@
     }
     .menu li:first-child::before {
       content: "│";
-      color: rgba(255, 255, 255, 0.75);
-      margin-right: 0.8rem;
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-right: 0.7rem;
+      font-size: 0.85rem;
     }
     .menu li::after {
       content: "│";
-      color: rgba(255, 255, 255, 0.75);
-      margin-left: 0.8rem;
-      margin-right: 0.8rem;
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-left: 0.7rem;
+      margin-right: 0.7rem;
+      font-size: 0.85rem;
     }
 
-    /* 針對手機等小螢幕進行字體與間距微調 */
-    @media (max-width: 600px) {
-      body {
-        padding: 6vh 5vw; /* 稍微縮減手機版邊距 */
-      }
-      h1 {
-        font-size: 1.4rem; /* 手機端自動縮小字體，確保排在同一行 */
-        letter-spacing: 0.05em; /* 稍微縮減字距 */
-      }
-      .menu button {
-        font-size: 0.85rem; /* 手機端選單字體縮小 */
-      }
-      .menu li:first-child::before {
-        margin-right: 0.4rem;
-      }
-      .menu li::after {
-        margin-left: 0.4rem;
-        margin-right: 0.4rem;
-      }
-    }
-
-    /* 4. 版面內部的子選單 (無豎線，純空格間距) */
+    /* 4. 版面內部的子選單 */
     .sub-menu {
       list-style: none;
       padding: 0;
-      margin: 0 0 2rem 0;
+      margin: 0 0 1.8rem 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1.5rem; /* 控制選項之間的空格距離 */
+      gap: 1.2rem;
     }
     .sub-menu li {
       margin: 0;
@@ -118,10 +98,10 @@
       border: none;
       color: rgba(255, 255, 255, 0.65);
       font-family: inherit;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0;
+      padding: 0 0 2px 0;
       transition: all 0.3s;
     }
     .sub-menu button:hover {
@@ -137,8 +117,8 @@
     .tab-content, .sub-tab-content {
       display: none;
       opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
     .tab-content.active, .sub-tab-content.active {
       display: block;
@@ -148,35 +128,61 @@
 
     /* 6. 內文與標題樣式 */
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: normal;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.08em;
     }
-    /* 中型強調標題（字體比下一行內文大） */
     .sub-heading {
-      font-size: 1.15rem;
+      font-size: 1.02rem;
       font-weight: bold;
-      margin-top: 1.5rem;
-      margin-bottom: 0.4rem;
+      margin-top: 1.4rem;
+      margin-bottom: 0.3rem;
       color: #ffffff;
     }
     p {
-      margin: 0.4rem 0;
-      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.92rem;
+      margin: 0.35rem 0;
+      color: rgba(255, 255, 255, 0.92);
     }
-    /* 空格間距組件（用於需要空一行的區域） */
     .spacer {
-      height: 1.2rem;
+      height: 1rem;
     }
-    /* 只出現在「版面」頁面的結尾祝福 */
     .footer-note {
-      margin-top: 4rem;
-      padding-top: 1.5rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.35);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.95rem;
+      margin-top: 3.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.88rem;
+    }
+
+    /* 手機端專用微調 */
+    @media (max-width: 600px) {
+      body {
+        padding: 5vh 5vw;
+      }
+      h1 {
+        font-size: 1.35rem; /* 確保完美單行呈現 */
+        letter-spacing: 0.03em;
+      }
+      .menu button {
+        font-size: 0.82rem;
+      }
+      .menu li:first-child::before {
+        margin-right: 0.35rem;
+      }
+      .menu li::after {
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -239,7 +245,7 @@
   <div id="layout" class="tab-content">
     <h2>會出現以下幾部分</h2>
 
-    <!-- 版面內部的子選單 (圖示 + 空格間隔) -->
+    <!-- 版面內部的子選單 -->
     <ul class="sub-menu">
       <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">🎮遊戲</button></li>
       <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">📖愛書</button></li>
@@ -288,7 +294,6 @@
 
   <!-- 控制頁籤切換的 JS -->
   <script>
-    // 主頁籤切換
     function switchTab(tabId, btnElement) {
       const allTabs = document.querySelectorAll('.tab-content');
       allTabs.forEach(tab => tab.classList.remove('active'));
@@ -300,7 +305,6 @@
       btnElement.classList.add('active');
     }
 
-    // 「版面」內部的子頁籤切換
     function switchSubTab(subTabId, btnElement) {
       const allSubTabs = document.querySelectorAll('.sub-tab-content');
       allSubTabs.forEach(tab => tab.classList.remove('active'));
