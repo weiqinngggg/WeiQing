@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你好，歡迎來到我的世界。</title>
+  <style>
+    /* 1. 基本版面與背景 */
+    body {
+      background-color: #6A93CD; /* 薄空色背景 */
+      color: #ffffff;           /* 主文字純白 */
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
+      margin: 0;
+      padding: 8vh 10vw;
+      text-align: left;
+      letter-spacing: 0.12em;
+      line-height: 2;
+    }
+
+    /* 2. 標題與署名 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin: 0 0 0.3rem 0;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    /* 3. 主選單按鈕 (保留分隔線風格) */
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .menu li {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    .menu button {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: inherit;
+      font-size: 1.1rem;
+      letter-spacing: inherit;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .menu button:hover {
+      color: #ffffff;
+    }
+    .menu button.active {
+      color: #ffffff;
+      font-weight: bold;
+      border-bottom: 1px solid #ffffff;
+    }
+    .menu li:first-child::before {
+      content: "│";
+      color: rgba(255, 255, 255, 0.75);
+      margin-right: 1rem;
+      font-size: 0.9rem;
+    }
+    .menu li::after {
+      content: "│";
+      color: rgba(255, 255, 255, 0.75);
+      margin-left: 1rem;
+      margin-right: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* 4. 版面內部的子選單 (無豎線，純空格間距) */
+    .sub-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem; /* 控制選項之間的空格距離 */
+    }
+    .sub-menu li {
+      margin: 0;
+    }
+    .sub-menu button {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: inherit;
+      font-size: 1.1rem;
+      letter-spacing: inherit;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .sub-menu button:hover {
+      color: #ffffff;
+    }
+    .sub-menu button.active {
+      color: #ffffff;
+      font-weight: bold;
+      border-bottom: 1px solid #ffffff;
+    }
+
+    /* 5. 分頁內容控制與淡入動畫 */
+    .tab-content, .sub-tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tab-content.active, .sub-tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 6. 內文與標題樣式 */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    /* 中型強調標題（字體比下一行內文大） */
+    .sub-heading {
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+    p {
+      margin: 0.4rem 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    /* 空格間距組件（用於需要空一行的區域） */
+    .spacer {
+      height: 1.2rem;
+    }
+    /* 只出現在「版面」頁面的結尾祝福 */
+    .footer-note {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 主頁標題區 -->
+  <h1>你好，歡迎來到我的世界。</h1>
+  <div class="subtitle">@蔚晴</div>
+
+  <!-- 主選單按鈕 -->
+  <ul class="menu">
+    <li><button class="tab-btn active" onclick="switchTab('about', this)">關於我</button></li>
+    <li><button class="tab-btn" onclick="switchTab('interaction', this)">交友/互動方式</button></li>
+    <li><button class="tab-btn" onclick="switchTab('layout', this)">版面</button></li>
+  </ul>
+
+  <!-- 分頁 1：關於我 -->
+  <div id="about" class="tab-content active">
+    <h2>關於我</h2>
+    <p>我是蔚晴，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
+    <p>已成年，生理和心理上都是女性。</p>
+    <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
+    
+    <div class="spacer"></div>
+    <div class="sub-heading">我希望你先了解的事</div>
+    <p>版面上會寫和現生男友的事，希望你不介意看這些再加我好友。</p>
+    <p>互動上請保有尊重，深入追問我的私生活會被我請出國。</p>
+    
+    <div class="spacer"></div>
+    <div class="sub-heading">這是我的缺點</div>
+    <p>不太有情感上的變化，語氣偏向平淡，很容易讓人誤以為在生氣。</p>
+  </div>
+
+  <!-- 分頁 2：交友/互動方式 -->
+  <div id="interaction" class="tab-content">
+    <h2>交友 / 互動方式</h2>
+    
+    <div class="sub-heading">交友</div>
+    <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
+    <p>（註：我方不會主動刪友，被刪可直戳回來。）</p>
+    
+    <div class="spacer"></div>
+    <p>婉拒<b>生理男、心理男</b>，非常抱歉，我會不知道如何相處。</p>
+    
+    <div class="spacer"></div>
+    <p>可以直戳，怕友邀被吃的話，置頂按表符我會比較容易看見！</p>
+    <p>我喜歡你的話也可能會直戳，如有冒犯非常抱歉。</p>
+    
+    <div class="spacer"></div>
+    <div class="sub-heading">互動</div>
+    <p>傾向到貼文下按表符或留言，而非一對一私訊聊天，我很容易句點你。</p>
+    <p>現生繁忙，介意雙向互動者我們可能不適合，不好意思。</p>
+    
+    <div class="spacer"></div>
+    <div class="sub-heading">請注意</div>
+    <p>不會有任何安定&偏愛，默認列內有你同擔嫁。</p>
+  </div>
+
+  <!-- 分頁 3：版面 -->
+  <div id="layout" class="tab-content">
+    <h2>會出現以下幾部分</h2>
+
+    <!-- 版面內部的子選單 (圖示 + 空格間隔) -->
+    <ul class="sub-menu">
+      <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">🎮遊戲</button></li>
+      <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">📖愛書</button></li>
+      <li><button class="sub-tab-btn" onclick="switchSubTab('craft', this)">🪡手工</button></li>
+    </ul>
+
+    <!-- 子分頁：遊戲 -->
+    <div id="game" class="sub-tab-content active">
+      <p>│世界之外│</p>
+      <p>顧時夜、夏蕭因（皆無戀愛思考，不拒同擔嫁）</p>
+      <p>│皮克敏│</p>
+      <p>喜歡紫皮、岩皮。</p>
+      <p>│心動小鎮│</p>
+    </div>
+
+    <!-- 子分頁：愛書 -->
+    <div id="book" class="sub-tab-content">
+      <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
+      
+      <div class="spacer"></div>
+      <p>│作家│</p>
+      <p>張愛玲、簡媜、邱妙津、言淑夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
+      <p>也很喜歡林奕含，不過至今沒有勇氣打開她的書。</p>
+      
+      <div class="spacer"></div>
+      <p>│詩人&詞人│</p>
+      <p>李清照、李商隱</p>
+      
+      <div class="spacer"></div>
+      <p>│NG│</p>
+      <p>不太喜歡黃山料的風格，不好意思</p>
+    </div>
+
+    <!-- 子分頁：手工 -->
+    <div id="craft" class="sub-tab-content">
+      <p>│鉤織│</p>
+      <p>學習中，目前到了能鉤點小作品的階段。</p>
+      <p>近期對水晶也有興趣。</p>
+    </div>
+
+    <!-- 僅限「版面」頁出現的結尾祝福 -->
+    <div class="footer-note">
+      <p>感謝你看完，無論有沒有成為朋友都祝你生活愉快。</p>
+    </div>
+  </div>
+
+  <!-- 控制頁籤切換的 JS -->
+  <script>
+    // 主頁籤切換
+    function switchTab(tabId, btnElement) {
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(tab => tab.classList.remove('active'));
+
+      const allBtns = document.querySelectorAll('.tab-btn');
+      allBtns.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+
+    // 「版面」內部的子頁籤切換
+    function switchSubTab(subTabId, btnElement) {
+      const allSubTabs = document.querySelectorAll('.sub-tab-content');
+      allSubTabs.forEach(tab => tab.classList.remove('active'));
+
+      const allSubBtns = document.querySelectorAll('.sub-tab-btn');
+      allSubBtns.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(subTabId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
