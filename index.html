@@ -5,42 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>你好，歡迎來到我的世界。</title>
   <style>
-    /* 1. 基本版面與背景 */
+    /* 1. 基本版面與漸層背景 */
     body {
-      background-color: #6A93CD; /* 薄空色背景 */
-      color: #ffffff;           /* 主文字純白 */
+      background: linear-gradient(135deg, #7FA2D8 0%, #5B7FB5 50%, #48699C 100%);
+      background-attachment: fixed;
+      color: #ffffff;
       font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0;
-      padding: 7vh 7vw;
+      padding: 6vh 5vw;
       text-align: left;
       letter-spacing: 0.08em;
       line-height: 1.85;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* 容器居中與質感卡片背景 */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     }
 
     /* 2. 標題與署名 */
     h1 {
-      font-size: 1.8rem;
-      font-weight: normal;
+      font-size: 1.75rem;
+      font-weight: 500;
       margin: 0 0 0.3rem 0;
       color: #ffffff;
       white-space: nowrap;
       letter-spacing: 0.06em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .subtitle {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 1.8rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 2rem;
+      display: inline-block;
+      padding-bottom: 0.2rem;
     }
 
     /* 3. 主選單按鈕 */
     .menu {
       list-style: none;
       padding: 0;
-      margin: 0 0 2rem 0;
+      margin: 0 0 2.2rem 0;
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       white-space: nowrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 0.8rem;
     }
     .menu li {
       margin: 0;
@@ -55,36 +76,37 @@
       font-size: 0.95rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0 0 2px 0;
-      transition: all 0.3s;
+      padding: 0.2rem 0.4rem;
+      transition: all 0.3s ease;
+      border-radius: 4px;
     }
     .menu button:hover {
       color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
     }
     .menu button.active {
       color: #ffffff;
       font-weight: bold;
-      border-bottom: 1px solid #ffffff;
-    }
-    .menu li:first-child::before {
-      content: "│";
-      color: rgba(255, 255, 255, 0.5);
-      margin-right: 0.7rem;
-      font-size: 0.85rem;
+      border-bottom: 2px solid #ffffff;
+      background: rgba(255, 255, 255, 0.12);
     }
     .menu li::after {
       content: "│";
-      color: rgba(255, 255, 255, 0.5);
-      margin-left: 0.7rem;
-      margin-right: 0.7rem;
-      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.3);
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .menu li:last-child::after {
+      content: "";
+      margin: 0;
     }
 
-    /* 4. 版面內部的子選單與說明文字 */
+    /* 4. 版面內部的說明文字與子選單 */
     .section-desc {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.2rem;
       letter-spacing: 0.06em;
     }
     .sub-menu {
@@ -94,36 +116,37 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1.2rem;
-    }
-    .sub-menu li {
-      margin: 0;
+      gap: 0.8rem;
     }
     .sub-menu button {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       letter-spacing: inherit;
       cursor: pointer;
-      padding: 0 0 2px 0;
-      transition: all 0.3s;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
     }
     .sub-menu button:hover {
       color: #ffffff;
+      background: rgba(255, 255, 255, 0.18);
     }
     .sub-menu button.active {
       color: #ffffff;
       font-weight: bold;
-      border-bottom: 1px solid #ffffff;
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     /* 5. 分頁內容控制與淡入動畫 */
     .tab-content, .sub-tab-content {
       display: none;
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(8px);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
     .tab-content.active, .sub-tab-content.active {
@@ -136,154 +159,167 @@
     .sub-heading {
       font-size: 1.02rem;
       font-weight: bold;
-      margin-top: 1.4rem;
-      margin-bottom: 0.3rem;
+      margin-top: 1.6rem;
+      margin-bottom: 0.4rem;
       color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .sub-heading::before {
+      content: "✦";
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
     }
     p {
       font-size: 0.92rem;
-      margin: 0.35rem 0;
+      margin: 0.4rem 0;
       color: rgba(255, 255, 255, 0.92);
     }
     .spacer {
-      height: 1rem;
+      height: 0.8rem;
     }
     .footer-note {
       margin-top: 3.5rem;
       padding-top: 1.2rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.3);
-      color: rgba(255, 255, 255, 0.85);
+      border-top: 1px dashed rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.88rem;
+      text-align: center;
     }
 
     /* 手機端專用微調 */
     @media (max-width: 600px) {
       body {
-        padding: 5vh 5vw;
+        padding: 4vh 3vw;
+      }
+      .container {
+        padding: 1.8rem 1.3rem;
+        border-radius: 12px;
       }
       h1 {
-        font-size: 1.35rem; /* 確保完美單行呈現 */
-        letter-spacing: 0.03em;
+        font-size: 1.3rem;
+        letter-spacing: 0.02em;
       }
       .menu button {
         font-size: 0.82rem;
-      }
-      .menu li:first-child::before {
-        margin-right: 0.35rem;
+        padding: 0.1rem 0.2rem;
       }
       .menu li::after {
-        margin-left: 0.35rem;
-        margin-right: 0.35rem;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
       }
       .section-desc {
-        font-size: 0.88rem;
+        font-size: 0.85rem;
       }
       p {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 主頁標題區 -->
-  <h1>你好，歡迎來到我的世界。</h1>
-  <div class="subtitle">@蔚晴</div>
+  <div class="container">
+    <!-- 主頁標題區 -->
+    <h1>你好，歡迎來到我的世界。</h1>
+    <div class="subtitle">@蔚晴</div>
 
-  <!-- 主選單按鈕 -->
-  <ul class="menu">
-    <li><button class="tab-btn active" onclick="switchTab('about', this)">關於我</button></li>
-    <li><button class="tab-btn" onclick="switchTab('interaction', this)">交友/互動方式</button></li>
-    <li><button class="tab-btn" onclick="switchTab('layout', this)">版面</button></li>
-  </ul>
-
-  <!-- 分頁 1：關於我 -->
-  <div id="about" class="tab-content active">
-    <p>我是蔚晴，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
-    <p>已成年，生理和心理上都是女性。</p>
-    <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
-    
-    <div class="spacer"></div>
-    <div class="sub-heading">我希望你先了解的事</div>
-    <p>版面上會寫和現生男友的事，希望你不介意看這些再加我好友。</p>
-    <p>互動上請保有尊重，深入追問我的私生活會被我請出國。</p>
-    
-    <div class="spacer"></div>
-    <div class="sub-heading">這是我的缺點</div>
-    <p>不太有情感上的變化，語氣偏向平淡，很容易讓人誤以為在生氣。</p>
-  </div>
-
-  <!-- 分頁 2：交友/互動方式 -->
-  <div id="interaction" class="tab-content">
-    <div class="sub-heading">交友</div>
-    <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
-    <p>（註：我方不會主動刪友，被刪可直戳回來。）</p>
-    
-    <div class="spacer"></div>
-    <p>婉拒<b>生理男、心理男</b>，非常抱歉，我會不知道如何相處。</p>
-    
-    <div class="spacer"></div>
-    <p>可以直戳，怕友邀被吃的話，置頂按表符我會比較容易看見！</p>
-    <p>我喜歡你的話也可能會直戳，如有冒犯非常抱歉。</p>
-    
-    <div class="spacer"></div>
-    <div class="sub-heading">互動</div>
-    <p>傾向到貼文下按表符或留言，而非一對一私訊聊天，我很容易句點你。</p>
-    <p>現生繁忙，介意雙向互動者我們可能不適合，不好意思。</p>
-    
-    <div class="spacer"></div>
-    <div class="sub-heading">請注意</div>
-    <p>不會有任何安定&偏愛，默認列內有你同擔嫁。</p>
-  </div>
-
-  <!-- 分頁 3：版面 -->
-  <div id="layout" class="tab-content">
-    <div class="section-desc">會出現以下幾部分：</div>
-
-    <!-- 版面內部的子選單 -->
-    <ul class="sub-menu">
-      <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">🎮遊戲</button></li>
-      <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">📖愛書</button></li>
-      <li><button class="sub-tab-btn" onclick="switchSubTab('craft', this)">🪡手工</button></li>
+    <!-- 主選單按鈕 -->
+    <ul class="menu">
+      <li><button class="tab-btn active" onclick="switchTab('about', this)">關於我</button></li>
+      <li><button class="tab-btn" onclick="switchTab('interaction', this)">交友/互動方式</button></li>
+      <li><button class="tab-btn" onclick="switchTab('layout', this)">版面</button></li>
     </ul>
 
-    <!-- 子分頁：遊戲 -->
-    <div id="game" class="sub-tab-content active">
-      <p>│世界之外│</p>
-      <p>顧時夜、夏蕭因（皆無戀愛思考，不拒同擔嫁）</p>
-      <p>│皮克敏│</p>
-      <p>喜歡紫皮、岩皮。</p>
-      <p>│心動小鎮│</p>
-    </div>
-
-    <!-- 子分頁：愛書 -->
-    <div id="book" class="sub-tab-content">
-      <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
+    <!-- 分頁 1：關於我 -->
+    <div id="about" class="tab-content active">
+      <p>我是蔚晴，名字取自蔚藍和晴空各一字，也可以叫我蔚蔚。</p>
+      <p>已成年，生理和心理上都是女性。</p>
+      <p>喜愛藍色、天空和海，發文時配圖常用這些。</p>
       
       <div class="spacer"></div>
-      <p>│作家│</p>
-      <p>張愛玲、簡媜、邱妙津、言淑夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
-      <p>也很喜歡林奕含，不過至今沒有勇氣打開她的書。</p>
+      <div class="sub-heading">我希望你先了解的事</div>
+      <p>版面上會寫和現生男友的事，希望你不介意看這些再加我好友。</p>
+      <p>互動上請保有尊重，深入追問我的私生活會被我請出國。</p>
       
       <div class="spacer"></div>
-      <p>│詩人&詞人│</p>
-      <p>李清照、李商隱</p>
+      <div class="sub-heading">這是我的缺點</div>
+      <p>不太有情感上的變化，語氣偏向平淡，很容易讓人誤以為在生氣。</p>
+    </div>
+
+    <!-- 分頁 2：交友/互動方式 -->
+    <div id="interaction" class="tab-content">
+      <div class="sub-heading">交友</div>
+      <p>主要看電波，有沒有同坑偏次要，加友後覺得電波沒對到、不合可以直接刪除。</p>
+      <p>（註：我方不會主動刪友，被刪可直戳回來。）</p>
       
       <div class="spacer"></div>
-      <p>│NG│</p>
-      <p>不太喜歡黃山料的風格，不好意思</p>
+      <p>婉拒<b>生理男、心理男</b>，非常抱歉，我會不知道如何相處。</p>
+      
+      <div class="spacer"></div>
+      <p>可以直戳，怕友邀被吃的話，置頂按表符我會比較容易看見！</p>
+      <p>我喜歡你的話也可能會直戳，如有冒犯非常抱歉。</p>
+      
+      <div class="spacer"></div>
+      <div class="sub-heading">互動</div>
+      <p>傾向到貼文下按表符或留言，而非一對一私訊聊天，我很容易句點你。</p>
+      <p>現生繁忙，介意雙向互動者我們可能不適合，不好意思。</p>
+      
+      <div class="spacer"></div>
+      <div class="sub-heading">請注意</div>
+      <p>不會有任何安定&偏愛，默認列內有你同擔嫁。</p>
     </div>
 
-    <!-- 子分頁：手工 -->
-    <div id="craft" class="sub-tab-content">
-      <p>│鉤織│</p>
-      <p>學習中，目前到了能鉤點小作品的階段。</p>
-      <p>近期對水晶也有興趣。</p>
-    </div>
+    <!-- 分頁 3：版面 -->
+    <div id="layout" class="tab-content">
+      <div class="section-desc">會出現以下幾部分：</div>
 
-    <!-- 僅限「版面」頁出現的結尾祝福 -->
-    <div class="footer-note">
-      <p>感謝你看完，無論有沒有成為朋友都祝你生活愉快。</p>
+      <!-- 版面內部的子選單 -->
+      <ul class="sub-menu">
+        <li><button class="sub-tab-btn active" onclick="switchSubTab('game', this)">🎮 遊戲</button></li>
+        <li><button class="sub-tab-btn" onclick="switchSubTab('book', this)">📖 愛書</button></li>
+        <li><button class="sub-tab-btn" onclick="switchSubTab('craft', this)">🪡 手工</button></li>
+      </ul>
+
+      <!-- 子分頁：遊戲 -->
+      <div id="game" class="sub-tab-content active">
+        <p>│世界之外│</p>
+        <p>顧時夜、夏蕭因（皆無戀愛思考，不拒同擔嫁）</p>
+        <p>│皮克敏│</p>
+        <p>喜歡紫皮、岩皮。</p>
+        <p>│心動小鎮│</p>
+      </div>
+
+      <!-- 子分頁：愛書 -->
+      <div id="book" class="sub-tab-content">
+        <p>一言以蔽之是偏向喜愛女性文學，認為歷史中有刻意彰顯男性、抹滅女性的成分，並不介意被套上女性主義者的稱呼。</p>
+        
+        <div class="spacer"></div>
+        <p>│作家│</p>
+        <p>張愛玲、簡媜、邱妙津、言淑夏、黃麗群、李屏瑤、李維菁、不朽、落涼。</p>
+        <p>也很喜歡林奕含，不過至今沒有勇氣打開她的書。</p>
+        
+        <div class="spacer"></div>
+        <p>│詩人&詞人│</p>
+        <p>李清照、李商隱</p>
+        
+        <div class="spacer"></div>
+        <p>│NG│</p>
+        <p>不太喜歡黃山料的風格，不好意思</p>
+      </div>
+
+      <!-- 子分頁：手工 -->
+      <div id="craft" class="sub-tab-content">
+        <p>│鉤織│</p>
+        <p>學習中，目前到了能鉤點小作品的階段。</p>
+        <p>近期對水晶也有興趣。</p>
+      </div>
+
+      <!-- 僅限「版面」頁出現的結尾祝福 -->
+      <div class="footer-note">
+        <p>感謝你看完，無論有沒有成為朋友都祝你生活愉快。</p>
+      </div>
     </div>
   </div>
 
