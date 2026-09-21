@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>你好，歡迎來到我的世界。</title>
+  <!-- 引入思源宋體 / 明體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  
   <style>
     /* 1. 基本版面與漸層背景 */
     body {
       background: linear-gradient(135deg, #7FA2D8 0%, #5B7FB5 50%, #48699C 100%);
       background-attachment: fixed;
       color: #ffffff;
+      /* 全域統一使用明體 */
       font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0;
       padding: 6vh 5vw;
@@ -36,7 +42,8 @@
     /* 2. 標題與署名 */
     h1 {
       font-size: 1.75rem;
-      font-weight: 500;
+      font-weight: 400;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0 0 0.3rem 0;
       color: #ffffff;
       white-space: nowrap;
@@ -49,6 +56,7 @@
       margin-bottom: 2rem;
       display: inline-block;
       padding-bottom: 0.2rem;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
 
     /* 3. 主選單按鈕 */
@@ -72,7 +80,7 @@
       background: none;
       border: none;
       color: rgba(255, 255, 255, 0.65);
-      font-family: inherit;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       font-size: 0.95rem;
       letter-spacing: inherit;
       cursor: pointer;
@@ -86,7 +94,7 @@
     }
     .menu button.active {
       color: #ffffff;
-      font-weight: bold;
+      font-weight: 600;
       border-bottom: 2px solid #ffffff;
       background: rgba(255, 255, 255, 0.12);
     }
@@ -108,6 +116,7 @@
       color: rgba(255, 255, 255, 0.8);
       margin-bottom: 1.2rem;
       letter-spacing: 0.06em;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
     .sub-menu {
       list-style: none;
@@ -122,7 +131,7 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: rgba(255, 255, 255, 0.8);
-      font-family: inherit;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       font-size: 0.88rem;
       letter-spacing: inherit;
       cursor: pointer;
@@ -136,7 +145,7 @@
     }
     .sub-menu button.active {
       color: #ffffff;
-      font-weight: bold;
+      font-weight: 600;
       background: rgba(255, 255, 255, 0.25);
       border-color: rgba(255, 255, 255, 0.6);
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -158,13 +167,14 @@
     /* 6. 內文與標題樣式 */
     .sub-heading {
       font-size: 1.02rem;
-      font-weight: bold;
+      font-weight: 600;
       margin-top: 1.6rem;
       margin-bottom: 0.4rem;
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
     .sub-heading::before {
       content: "✦";
@@ -175,6 +185,7 @@
       font-size: 0.92rem;
       margin: 0.4rem 0;
       color: rgba(255, 255, 255, 0.92);
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
     .spacer {
       height: 0.8rem;
@@ -186,6 +197,7 @@
       color: rgba(255, 255, 255, 0.8);
       font-size: 0.88rem;
       text-align: center;
+      font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
     }
 
     /* 手機端專用微調 */
@@ -343,10 +355,4 @@
       const allSubBtns = document.querySelectorAll('.sub-tab-btn');
       allSubBtns.forEach(btn => btn.classList.remove('active'));
 
-      document.getElementById(subTabId).classList.add('active');
-      btnElement.classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
+      document.getElementById(subTabId).cla
