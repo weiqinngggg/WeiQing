@@ -11,7 +11,7 @@
       color: #ffffff;           /* 主文字純白 */
       font-family: "Noto Serif TC", "Songti TC", "MingLiU", "新細明體", serif;
       margin: 0;
-      padding: 8vh 10vw;
+      padding: 8vh 8vw;
       text-align: left;
       letter-spacing: 0.12em;
       line-height: 2;
@@ -23,6 +23,7 @@
       font-weight: normal;
       margin: 0 0 0.3rem 0;
       color: #ffffff;
+      white-space: nowrap; /* 防止自動折行 */
     }
     .subtitle {
       font-size: 1rem;
@@ -36,8 +37,9 @@
       padding: 0;
       margin: 0 0 2rem 0;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* 避免選單自動換行 */
       align-items: center;
+      white-space: nowrap;
     }
     .menu li {
       margin: 0;
@@ -66,15 +68,36 @@
     .menu li:first-child::before {
       content: "│";
       color: rgba(255, 255, 255, 0.75);
-      margin-right: 1rem;
+      margin-right: 0.8rem;
       font-size: 0.9rem;
     }
     .menu li::after {
       content: "│";
       color: rgba(255, 255, 255, 0.75);
-      margin-left: 1rem;
-      margin-right: 1rem;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
       font-size: 0.9rem;
+    }
+
+    /* 針對手機等小螢幕進行字體與間距微調 */
+    @media (max-width: 600px) {
+      body {
+        padding: 6vh 5vw; /* 稍微縮減手機版邊距 */
+      }
+      h1 {
+        font-size: 1.4rem; /* 手機端自動縮小字體，確保排在同一行 */
+        letter-spacing: 0.05em; /* 稍微縮減字距 */
+      }
+      .menu button {
+        font-size: 0.85rem; /* 手機端選單字體縮小 */
+      }
+      .menu li:first-child::before {
+        margin-right: 0.4rem;
+      }
+      .menu li::after {
+        margin-left: 0.4rem;
+        margin-right: 0.4rem;
+      }
     }
 
     /* 4. 版面內部的子選單 (無豎線，純空格間距) */
